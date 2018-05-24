@@ -1,11 +1,12 @@
-public class HeapSort {
+/***
+* 1. Build Max Heap (parent item is great than two children items) from array first
+* 2. Largest item should be at root now. Swap root with item at end of heap. 
+*    Reduce heap size by 1. Then heapify the root of tree. 
+* 
+* Execution time for heap sort is O(nlog(n)). 
+***/
 
-    public static void main(String[] args) {
-        int[] myArray = new int[]{3, 2, 6, 1, 9, 5, 8};
-        System.out.print("Original Array: ");
-        printArray(myArray);
-        sort(myArray);
-    }
+public class HeapSort {
 
     private static void sort(int[] arr) {
         int last = arr.length - 1;
@@ -21,7 +22,6 @@ public class HeapSort {
         System.out.println("\nSticking greatest node towards end of heap: ");
         for (int i = last; i >= 0; --i) {
             arr = swap(arr, 0, i);
-            printArray(arr);
             arr = buildMaxHeap(arr, i, 0);     // adjust max heap from root
             printArray(arr);
         }
@@ -60,5 +60,12 @@ public class HeapSort {
             System.out.printf(ele + " ");
         }
         System.out.println();
+    }
+
+    public static void main(String[] args) {
+        int[] myArray = new int[]{3, 2, 6, 1, 9, 5, 8};
+        System.out.print("Original Array: ");
+        printArray(myArray);
+        sort(myArray);
     }
 }
